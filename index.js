@@ -5,6 +5,7 @@ const dotenv = require('dotenv').config();
 
 // import routes
 const authRoutes = require('./routes/auth');
+const refreshTokenRoutes = require('./routes/refreshToken');
 
 const mongoose = require('mongoose');
 // create an express app
@@ -16,6 +17,7 @@ mongoose.connect('mongodb://localhost/demoDB', {useNewUrlParser : true, useCreat
 
 app.use(express.json());
 app.use('/api/v1', authRoutes);
+app.use('/api/v2', refreshTokenRoutes);
 
 // listen to the port 
 app.listen(port, (error)=> {
